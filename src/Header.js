@@ -1,15 +1,15 @@
-import React from 'react';
-import { logout } from './firebase/auth';
-import { useHistory } from 'react-router-dom';
-import { useSession } from './firebase/UserProvider';
+import React from "react";
+import { logout } from "./firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useSession } from "./firebase/UserProvider";
 
 function Header() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { user } = useSession();
 
   const logoutUser = async () => {
     await logout();
-    history.push('/login');
+    navigate("/login");
   };
 
   return (
